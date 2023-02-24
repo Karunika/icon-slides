@@ -1,24 +1,20 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import Input from './components/input';
+import Slides from './components/slides';
+import Create from './components/create';
+import SlidesProvider from './context/slidesContext';
 
 function App() {
+  const [title, setTitle] = useState('my title');
+  const [create, setCreate] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <SlidesProvider>
+        <Input text={title} setText={setTitle} initialText={title} />
+        <Slides />
+        <button onClick={() => setCreate(true)}>create</button>
+        {create && <Create closeCreate={() => setCreate(false)} />}
+      </SlidesProvider>
     </div>
   );
 }
