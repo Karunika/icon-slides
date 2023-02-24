@@ -1,5 +1,5 @@
 import React from "react";
-import Slide from './slide';
+import SlideCard from './slidecard';
 import { useSlidesContext, ISlide } from "../context/slidesContext";
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import type {
@@ -18,11 +18,11 @@ const Slides = () => {
         <DragDropContext onDragEnd={dragEndHandler}>
             <Droppable droppableId='droppable-slides' direction='horizontal'>
                 {(provided: DroppableProvided) => (
-                   <div className='flex-h'
+                   <div className='flex-h slides'
                     ref={provided.innerRef}
                     {...provided.droppableProps}>
                         {slides.map((slide: ISlide, i: number) => (
-                            <Slide key={slide.id} slide={slide} index={i} />
+                            <SlideCard key={slide.id} slide={slide} index={i} />
                         ))}
                         {provided.placeholder}
                     </div>

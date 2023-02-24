@@ -4,9 +4,10 @@ interface InputProp {
     text: string;
     setText: any;
     initialText: string;
+    className?: string;
 }
 
-const Input = ({text, setText, initialText}: InputProp) => {
+const Input = ({text, setText, initialText, className = ''}: InputProp) => {
     const inputRef = createRef<HTMLInputElement>();
     const [cacheInput, setCacheInput] = useState(initialText);
     const [editingMode, setEditingMode] = useState(false);
@@ -41,9 +42,11 @@ const Input = ({text, setText, initialText}: InputProp) => {
             onChange={changeHandler}
             onBlur={blurHandler}
             onKeyDown={keyDownHandler}
+            className={className}
           /> :
           <span
-            onDoubleClick={() => setEditingMode(true)}>
+            onDoubleClick={() => setEditingMode(true)}
+            className={className}>
               {text}
           </span>
         }

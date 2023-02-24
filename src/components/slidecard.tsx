@@ -8,7 +8,7 @@ interface ISlideProp {
     index: number;
 }
 
-const Slide = ({slide: { id, icon, title, description}, index}: ISlideProp) => {
+const SlideCard = ({slide: { id, icon, title, description}, index}: ISlideProp) => {
     const { editTitle } = useSlidesContext();
     return (
         <Draggable draggableId={id} index={index}>
@@ -17,7 +17,7 @@ const Slide = ({slide: { id, icon, title, description}, index}: ISlideProp) => {
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
-                    className='slide'
+                    className='slidecard'
                 >
                     <span className='material-icons'>{icon}</span>
                     <Input text={title} setText={editTitle(id)} initialText={title} />
@@ -28,4 +28,4 @@ const Slide = ({slide: { id, icon, title, description}, index}: ISlideProp) => {
     )
 }
 
-export default Slide;
+export default SlideCard;

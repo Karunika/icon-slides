@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import Search from './search';
+import { useSlidesContext } from '../context/slidesContext';
 
 interface ICreateProps {
     closeCreate: any;
 }
 
 const Create = ({ closeCreate }: ICreateProps) => {
-    const [icon, setIcon] = useState('close');
+    const { addSlide } = useSlidesContext();
+    const [icon, setIcon] = useState('');
     const [content, setContent] = useState({
         title: '',
         description: ''
@@ -17,6 +19,14 @@ const Create = ({ closeCreate }: ICreateProps) => {
             ...content,
             [e.currentTarget.name]: e.currentTarget.value
         })
+    }
+
+    const createSlide = () => {
+        const { title, description } = content;
+        if (title !== '' || description !== '') {
+            addSlide(icon, content.title, content.description);
+            closeCreate();
+        }
     }
 
     return (
@@ -54,7 +64,7 @@ const Create = ({ closeCreate }: ICreateProps) => {
                     <hr />
                     <div>
                         <button type='reset' className='cancel' onClick={closeCreate}>Cancel</button>
-                        <button>Create</button>
+                        <button onClick={createSlide}>Create</button>
                     </div>
                 </div>
             </form>
