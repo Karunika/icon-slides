@@ -37,7 +37,7 @@ const Create = ({ closeCreate }: ICreateProps) => {
                     <hr />
                 </div>
                 <div className='modal-content'>
-                    <Search setIcon={setIcon}/>
+                    <Search icon={icon} setIcon={setIcon}/>
                     <div className='separator'></div>
                     <div className='modal-content-right'>
                         <span className='input-wrapper'>

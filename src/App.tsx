@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import Input from './components/input';
 import Slides from './components/slides';
 import Create from './components/create';
-import Doc from './components/document';
 import SlidesProvider from './context/slidesContext';
-import { PDFViewer, PDFDownloadLink } from '@react-pdf/renderer';
 
 function App() {
   const [title, setTitle] = useState('my title');
@@ -19,12 +17,6 @@ function App() {
           <button>render</button>
         </div>
         {create && <Create closeCreate={() => setCreate(false)} />}
-        <PDFViewer>
-          <Doc />
-        </PDFViewer>
-        <PDFDownloadLink document={<Doc />}>
-          <button>download</button>
-        </PDFDownloadLink>
       </div>
     </SlidesProvider>
   );

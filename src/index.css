@@ -151,6 +151,7 @@ button.cancel {
 .flex-h {
   display: flex;
   flex-driection: row;
+  align-items: center;
 }
 
 .slides {
@@ -159,7 +160,7 @@ button.cancel {
 
 .slidecard {
   height: 200px;
-  width: 200px;
+  min-width: 200px;
   border-radius: 6px;
   box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
   display: flex;
@@ -168,6 +169,32 @@ button.cancel {
   justify-content: center;
   margin: 4px 16px;
   background-color: white;
+}
+
+.right-button, .left-button {
+  display: block;
+  height: 100px;
+  width: 48px;
+  cursor: pointer;
+  /* background-color: black; */
+  color: white;
+  line-height: 100px;
+  font-size: 1.6rem;
+  text-align: center;
+  color: black;
+}
+
+.frame {
+  position:relative;
+  max-width: calc(232px*3);
+  overflow: hidden;
+}
+
+#train {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: 0.4s ease;
 }
 
 /* .slidecard .title {

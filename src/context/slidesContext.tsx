@@ -38,6 +38,12 @@ const SlidesProvider = ({children}: any) => {
             title: 'this is a title 3',
             description: 'this is the description'
         },
+        {
+            id: '4',
+            icon: 'air',
+            title: 'this is a title 4',
+            description: 'this is the description'
+        },
     ]);
 
     const addSlide = (icon: string, title: string, description: string) => {
