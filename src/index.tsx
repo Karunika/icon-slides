@@ -6,12 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import 'material-icons/iconfont/material-icons.css';
 import 'material-icons/iconfont/filled.css';
 import 'material-icons/iconfont/outlined.css';
+import SlidesProvider from './context/slidesContext';
 
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
-root.render(<App />);
+root.render(
+  <SlidesProvider>
+    <App />
+  </SlidesProvider>
+);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
