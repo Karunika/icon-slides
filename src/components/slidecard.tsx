@@ -26,7 +26,7 @@ const SlideCard = ({slide: { id, icon, title, description}, index}: ISlideProp) 
                     className='slidecard'
                 >
                     <span className='material-icons'>{icon}</span>
-                    <Input text={title} setText={editSlide(id)} initialText={title} />
+                    <Input text={title} setText={editSlide(id)} initialText={title} className='slidecard-title' />
                     <Input text={description} setText={editSlide(id, false)} initialText={description} />
                     <a className='anchor-delete' onClick={deleteButtonHandler}>delete</a>
                 </div>
