@@ -23,6 +23,7 @@ const Slides = () => {
     }
 
     const rightButtonHandler = () => {
+        if (slides.length < 3) return;
         setOffset(o => Math.min(slides.length -3, o+1))
     }
 

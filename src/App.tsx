@@ -14,9 +14,15 @@ function App() {
         <Slides />
         <div className='app-buttons'>
           <button onClick={() => setCreate(true)}>create</button>
-          <button>render</button>
         </div>
         {create && <Create closeCreate={() => setCreate(false)} />}
+        <div className='notes'>
+          Features:
+          <ol>
+            <li>Double click to edit main-title, slide title and slide description</li>
+            <li>Drag and drop the slides to rearrange slides</li>
+          </ol>
+        </div>
       </div>
     </SlidesProvider>
   );

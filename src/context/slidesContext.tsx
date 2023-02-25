@@ -10,10 +10,10 @@ export interface ISlide {
 
 interface ISlideContext {
     slides: ISlide[];
-    addSlide: any;
-    deleteSlide: any;
-    editTitle: any;
-    rearrangeSlides: any;
+    addSlide: (icon: string, title: string, description: string) => void;
+    deleteSlide: (id: string) => void;
+    editSlide: (id: string, isTitle?: boolean) => (newString: string) => void;
+    rearrangeSlides: (dragId: number, dropId: number) => void;
 }
 
 const SlidesContext = createContext<ISlideContext>({} as ISlideContext);
@@ -60,12 +60,12 @@ const SlidesProvider = ({children}: any) => {
         setSlides((slides) => slides.filter((slide) => slide.id !== id));
     }
 
-    const editTitle = (id: string) => {
-        return (title: string) => {
+    const editSlide = (id: string, isTitle = true) => {
+        return (newString: string) => {
             setSlides(slides => (
                 slides.map(slide => slide.id === id ? {
                     ...slide,
-                    title: title
+                    [isTitle ? 'title' : 'description']: newString
                 } : slide)
             ))
         }
@@ -79,7 +79,7 @@ const SlidesProvider = ({children}: any) => {
     }
 
     return (
-        <SlidesContext.Provider value={{slides, addSlide, deleteSlide, editTitle, rearrangeSlides}}>
+        <SlidesContext.Provider value={{slides, addSlide, deleteSlide, editSlide, rearrangeSlides}}>
             {children}
         </SlidesContext.Provider>
     )
