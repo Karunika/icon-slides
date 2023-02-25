@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 // import { v4 } from 'uuid';
 
 export interface ISlide {
@@ -19,32 +19,7 @@ interface ISlideContext {
 const SlidesContext = createContext<ISlideContext>({} as ISlideContext);
 
 const SlidesProvider = ({children}: any) => {
-    const [slides, setSlides] = useState<ISlide[]>([
-        {
-            id: '1',
-            icon: 'air',
-            title: 'this is a title 1',
-            description: 'this is the description'
-        },
-        {
-            id: '2',
-            icon: 'air',
-            title: 'this is a title 2',
-            description: 'this is the description'
-        },
-        {
-            id: '3',
-            icon: 'air',
-            title: 'this is a title 3',
-            description: 'this is the description'
-        },
-        {
-            id: '4',
-            icon: 'air',
-            title: 'this is a title 4',
-            description: 'this is the description'
-        },
-    ]);
+    const [slides, setSlides] = useState<ISlide[]>([]);
 
     const addSlide = (icon: string, title: string, description: string) => {
         const newSlide = {
@@ -77,6 +52,15 @@ const SlidesProvider = ({children}: any) => {
             return slides;
         });
     }
+
+    useEffect(() => {
+        const storedSlides = JSON.parse(window.localStorage.getItem('slides') || '[]');
+        setSlides(storedSlides);
+    }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem('slides', JSON.stringify(slides))
+    }, [slides])
 
     return (
         <SlidesContext.Provider value={{slides, addSlide, deleteSlide, editSlide, rearrangeSlides}}>

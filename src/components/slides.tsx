@@ -28,10 +28,13 @@ const Slides = () => {
     }
 
     useEffect(() => {
-        document.getElementById('train')!.style.marginLeft = -offset*232 + 'px';
+        const train = document.getElementById('train');
+        if (train) {
+            train.style.marginLeft = -offset*232 + 'px';
+        }
     }, [offset])
 
-    return (
+    return slides.length == 0 ? <span style={{marginTop: '1rem'}}>no Slides to show</span> : (
         <DragDropContext onDragEnd={dragEndHandler}>
             <Droppable droppableId='droppable-slides' direction='horizontal'>
                 {(provided: DroppableProvided) => (

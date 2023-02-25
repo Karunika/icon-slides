@@ -52,6 +52,7 @@ const App = () => {
         <ol>
           <li>Double click to edit main-title, slide title and slide description</li>
           <li>Drag and drop the slides to rearrange slides</li>
+          <li>The icon slides data persists in the browser localStorage</li>
         </ol>
       </div>
     </div>
