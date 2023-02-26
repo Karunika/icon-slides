@@ -7,11 +7,23 @@ interface SearchProps {
 }
 
 const Search = ({icon, setIcon}: SearchProps) => {
+    const [prevIcon, setPrevIcon] = useState(icon);
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setIcon(e.currentTarget.value)
     }
     const iconClickHandler = (icon: string) => {
         setIcon(icon);
+    }
+    const focusHandler = () => {
+        setPrevIcon(icon);
+    }
+    const blurHandler = () => {
+        const select = Object.keys(json).find(k => k.startsWith(icon));
+        if (select) {
+            setIcon(select);
+        } else {
+            setIcon(prevIcon);
+        }
     }
     return (
         <div className='search-wrapper'>
@@ -20,6 +32,8 @@ const Search = ({icon, setIcon}: SearchProps) => {
                     name='search-icon'
                     value={icon}
                     onChange={changeHandler}
+                    onFocus={focusHandler}
+                    onBlur={blurHandler}
                     required
                 />
                 <label htmlFor='search-icon'>Search Icons</label>

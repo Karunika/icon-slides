@@ -177,10 +177,6 @@ button.cancel {
   cursor: text;
 }
 
-.slidecard * {
-  transition: 0.4s ease;
-}
-
 .slidecard .material-icons {
   font-size: 3.2rem;
 }
