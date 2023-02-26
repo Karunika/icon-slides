@@ -170,7 +170,6 @@ button.cancel {
   justify-content: center;
   margin: 4px 16px;
   background-color: white;
-  transition: 0.4s ease;
 }
 
 .slidecard input, .slidecard span {
