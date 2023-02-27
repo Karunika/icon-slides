@@ -49,7 +49,7 @@ const SlidesProvider = ({children}: any) => {
     const rearrangeSlides = (dragId: number, dropId: number) => {
         setSlides(slides => {
             slides.splice(dropId, 0, slides.splice(dragId, 1)[0]);
-            return slides;
+            return [...slides];
         });
     }
 
